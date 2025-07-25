@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karan Kumar - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .resume-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 20%, transparent 21%);
+            background-size: 30px 30px;
+            animation: float 20s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header .age {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95em;
+        }
+        
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .contact-item a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .section:nth-child(1) { animation-delay: 0.2s; }
+        .section:nth-child(2) { animation-delay: 0.4s; }
+        .section:nth-child(3) { animation-delay: 0.6s; }
+        .section:nth-child(4) { animation-delay: 0.8s; }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+            position: relative;
+        }
+        
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #e74c3c;
+            border-radius: 2px;
+        }
+        
+        .objective-text {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.7;
+            text-align: justify;
+        }
+        
+        .education-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: transform 0.3s ease;
+        }
+        
+        .education-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .education-item h3 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-category {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-top: 4px solid #3498db;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .skill-category h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .projects-grid {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .project-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #dee2e6;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #e74c3c, #f39c12);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .project-title {
+            color: #2c3e50;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .project-description {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border: 2px solid #3498db;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .project-link:hover {
+            background: #3498db;
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .project-link::after {
+            content: '→';
+            transition: transform 0.3s ease;
+        }
+        
+        .project-link:hover::after {
+            transform: translateX(3px);
+        }
+        
+        @media (max-width: 768px) {
+            .resume-container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <div class="header">
+            <h1>Karan Kumar</h1>
+            <div class="age">Age: 20</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>New Delhi, India</span>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <a href="tel:+919354160337">+91-9354160337</a>
+                </div>
+                <div class="contact-item">
+                    <span>✉️</span>
+                    <a href="mailto:karan65176@proton.me">karan65176@proton.me</a>
+                </div>
+                <div class="contact-item">
+                    <span>💻</span>
+                    <a href="https://github.com/AdroitNightsun" target="_blank">GitHub Profile</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2>Objective</h2>
+                <p class="objective-text">
+                    Tech-savvy fresher pursuing BA in History at Delhi University, seeking entry-level role in AI, web development, or tech to apply generative AI, website-building, and general tech skills.
+                </p>
+            </div>
+            
+            <div class="section">
+                <h2>Education</h2>
+                <div class="education-item">
+                    <h3>BA Program, History Major</h3>
+                    <p><strong>University of Delhi</strong> | Pursuing, Expected 2027</p>
+                </div>
+                <div class="education-item">
+                    <h3>Class 12</h3>
+                    <p><strong>Atal Adarsh Vidhyalaya, Green Park</strong></p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Technical Skills</h4>
+                        <p>Generative AI (ChatGPT), Website Development (HTML/CSS/JS), Basic Programming</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Soft Skills</h4>
+                        <p>Quick Learner, Analytical Thinking, Adaptable</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Tools & Platforms</h4>
+                        <p>GitHub, VS Code, AI Platforms</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Languages</h4>
+                        <p>English, Hindi (Fluent)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-title">Beauty Website</div>
+                        <div class="project-description">
+                            Responsive beauty website built with modern CSS techniques for optimal user experience across devices.
+                        </div>
+                        <a href="https://adroitnightsun.github.io/FirstEverBeautyWebSite1.1/" target="_blank" class="project-link">
+                            <span>🌐</span> View Live Demo
+                        </a>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-title">Weather App</div>
+                        <div class="project-description">
+                            Interactive weather application using OpenWeather API to display real-time weather data with clean UI.
+                        </div>
+                        <a href="https://adroitnightsun.github.io/FirstEverWeather/" target="_blank" class="project-link">
+                            <span>🌤️</span> View Live Demo
+                        </a>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-title">To-Do List (Mark II)</div>
+                        <div class="project-description">
+                            Advanced task manager with local storage implementation for persistent data and enhanced user experience.
+                        </div>
+                        <a href="https://adroitnightsun.github.io/SecondEverToDoList/" target="_blank" class="project-link">
+                            <span>✅</span> View Live Demo
+                        </a>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-title">Normal Calculator</div>
+                        <div class="project-description">
+                            Clean and functional calculator application with intuitive interface for basic mathematical operations.
+                        </div>
+                        <a href="https://adroitnightsun.github.io/Norm-KalC/" target="_blank" class="project-link">
+                            <span>🧮</span> View Live Demo
+                        </a>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-title">To-Do List (Initial)</div>
+                        <div class="project-description">
+                            Simple task input and display application - first project showcasing fundamental web development skills.
+                        </div>
+                        <a href="https://adroitnightsun.github.io/FirstEverToDoList/" target="_blank" class="project-link">
+                            <span>📝</span> View Live Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
